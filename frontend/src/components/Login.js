@@ -11,11 +11,15 @@ function Login() {
         password: ''
     });
 
+    const change = (e) => {
+        setFormdata({...formdata, [e.target.name]: e.target.value});
+    };
+
     const submit = async (e) => {
         e.preventDefault();
 
         try{
-            const response = await axios.post("/api/login", formdata, {
+            const response = await axios.post("http://localhost:8080/api/login", formdata, {
                 headers: {"Content-Type": "application/json"}
             });
 
@@ -32,8 +36,8 @@ function Login() {
     return(
         <div>
             <form onSubmit={submit}>
-                <input type="text" name="loginId" placeholder="id" value = {formdata.loginId}></input>
-                <input type="password" name="password" placeholder="password" value={formdata.password}></input>
+                <input type="text" name="loginId" placeholder="id" value = {formdata.loginId} onChange={change}></input>
+                <input type="password" name="password" placeholder="password" value={formdata.password} onChange={change}></input>
                 <button type="submit">Login</button>
             </form>
         </div>

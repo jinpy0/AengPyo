@@ -27,7 +27,7 @@ function Register() {
 
         try {
             // 백엔드 API로 회원가입 요청을 보냄
-            const response = await axios.post("/api/members/register", formdata, {
+            const response = await axios.post("http://localhost:8080/api/members/register", formdata, {
                 headers: {"Content-Type": "application/json"}  // JSON 형식으로 데이터 전송
             });
 
