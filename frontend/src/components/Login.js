@@ -18,7 +18,7 @@ function Login() {
             const response = await axios.post("/api/login", formdata, {
                 headers: {"Content-Type": "application/json"}
             });
- // 123
+
             const {id} = response.data;
             setFormdata(id);
             navigate("/");
