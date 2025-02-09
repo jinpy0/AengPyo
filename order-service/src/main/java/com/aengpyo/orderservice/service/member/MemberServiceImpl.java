@@ -1,4 +1,4 @@
-package com.aengpyo.orderservice.service;
+package com.aengpyo.orderservice.service.member;
 
 import com.aengpyo.orderservice.domain.member.Member;
 import com.aengpyo.orderservice.repository.member.MemberRepository;

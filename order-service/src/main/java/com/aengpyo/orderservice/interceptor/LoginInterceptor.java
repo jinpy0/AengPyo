@@ -14,15 +14,12 @@ public class LoginInterceptor implements HandlerInterceptor {
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-        String requestURI = request.getRequestURI();
-        HttpSession session = request.getSession(false);
+        HttpSession session = request.getSession();
 
         if (session == null || session.getAttribute(SessionConst.LOGIN_SESSION) == null) {
-            log.info("로그인 하지 않은 사용자의 요청 차단 : {}", requestURI);
             throw new MemberException("로그인이 필요합니다.", HttpStatus.UNAUTHORIZED);
         }
 
-        log.info("로그인 한 사용자의 요청 : {}", requestURI);
         return true;
     }
 }

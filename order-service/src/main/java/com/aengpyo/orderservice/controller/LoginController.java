@@ -5,10 +5,11 @@ import com.aengpyo.orderservice.domain.member.Member;
 import com.aengpyo.orderservice.dto.member.MemberLoginRequest;
 import com.aengpyo.orderservice.dto.member.MemberResponse;
 import com.aengpyo.orderservice.exception.MemberException;
-import com.aengpyo.orderservice.service.MemberService;
+import com.aengpyo.orderservice.service.member.MemberService;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
@@ -18,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+@Slf4j
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api")

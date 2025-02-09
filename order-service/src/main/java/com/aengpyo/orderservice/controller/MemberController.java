@@ -5,7 +5,7 @@ import com.aengpyo.orderservice.domain.member.Member;
 import com.aengpyo.orderservice.dto.member.MemberRegisterRequest;
 import com.aengpyo.orderservice.dto.member.MemberResponse;
 import com.aengpyo.orderservice.exception.MemberException;
-import com.aengpyo.orderservice.service.MemberService;
+import com.aengpyo.orderservice.service.member.MemberService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
