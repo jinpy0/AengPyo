@@ -77,7 +77,6 @@ public class MemberController {
 
     @GetMapping("/{id}") //개인 정보 조회
     public ResponseEntity<MemberResponse> getMember(@PathVariable long id) {
-        log.info("요청 Id={}", id);
         Member member = memberService.findMemberById(id)
                 .orElseThrow(() -> new CommonException("회원이 존재하지 않습니다.", HttpStatus.NOT_FOUND));
 

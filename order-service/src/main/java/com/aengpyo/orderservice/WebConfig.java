@@ -24,11 +24,11 @@ public class WebConfig implements WebMvcConfigurer {
 
     @Override
     public void addCorsMappings(CorsRegistry registry) {
-        registry.addMapping("/api/**")  // API 경로에 대해 CORS 허용
-                .allowedOrigins("http://localhost:3000")  // React 앱의 주소
-                .allowedMethods("GET", "POST", "PUT", "DELETE")  // 허용할 HTTP 메서드
-                .allowedHeaders("*")  // 모든 헤더 허용
-                .allowCredentials(true);  // 인증 정보 전송 허용
+        registry.addMapping("/**")  // ✅ 모든 경로에 대해 CORS 허용
+                .allowedOrigins("http://localhost:3000")  // ✅ React에서 요청 가능하도록 설정
+                .allowedMethods("GET", "POST", "PUT", "DELETE")  // ✅ 모든 HTTP 메서드 허용
+                .allowedHeaders("*")  // ✅ 모든 헤더 허용
+                .allowCredentials(true);  // ✅ 세션 유지 (이게 없으면 로그인 정보가 전달되지 않음)
     }
 
 }

@@ -17,10 +17,9 @@ import org.springframework.web.servlet.NoHandlerFoundException;
 public class GlobalExceptionHandler {
 
     @ExceptionHandler(CommonException.class)
-    public ResponseEntity<ErrorResponse> handleMemberException(CommonException e) {
+    public ResponseEntity<ErrorResponse> handleCommonException(CommonException e) {
         return ResponseEntity.status(e.getStatus()).body(new ErrorResponse(e.getMessage()));
     }
-
 
     @ExceptionHandler(NoHandlerFoundException.class)
     public ResponseEntity<ErrorResponse> handleNotFoundException(NoHandlerFoundException ex) {

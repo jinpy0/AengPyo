@@ -34,19 +34,16 @@ public class ProductController {
                                                     HttpServletRequest request) {
 
         if (bindingResult.hasErrors()) {
-            log.info("유효성 검사 실패");
             throw new CommonException("유효성 검사 실패", HttpStatus.BAD_REQUEST);
         }
 
         HttpSession session = request.getSession(false);
         if (session == null) {
-            log.info("❌ 세션 없음 (request.getSession(false) == null)");
             throw new CommonException("세션이 만료되었습니다. 다시 로그인해주세요.", HttpStatus.UNAUTHORIZED);
         }
 
         Member member = (Member) session.getAttribute(SessionConst.LOGIN_SESSION);
         if (member == null) {
-            System.out.println("❌ 로그인 정보 없음 (session.getAttribute(SessionConst.LOGIN_SESSION) == null)");
             throw new CommonException("로그인이 필요합니다.", HttpStatus.UNAUTHORIZED);
         }
 
