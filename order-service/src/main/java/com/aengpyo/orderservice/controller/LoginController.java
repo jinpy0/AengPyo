@@ -4,7 +4,7 @@ import com.aengpyo.orderservice.SessionConst;
 import com.aengpyo.orderservice.domain.member.Member;
 import com.aengpyo.orderservice.dto.member.MemberLoginRequest;
 import com.aengpyo.orderservice.dto.member.MemberResponse;
-import com.aengpyo.orderservice.exception.MemberException;
+import com.aengpyo.orderservice.exception.CommonException;
 import com.aengpyo.orderservice.service.member.MemberService;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
@@ -33,12 +33,12 @@ public class LoginController {
                                                 HttpServletRequest request) {
 
         if (bindingResult.hasErrors()) {
-            throw new MemberException("유효성 검사 실패", HttpStatus.BAD_REQUEST);
+            throw new CommonException("유효성 검사 실패", HttpStatus.BAD_REQUEST);
         }
 
         Member member = memberService.findMemberByLoginId(loginRequest.getLoginId())
                 .filter(m -> m.getPassword().equals(loginRequest.getPassword()))
-                .orElseThrow(() -> new MemberException("아이디 또는 비밀번호가 일치하지 않습니다.", HttpStatus.BAD_REQUEST));
+                .orElseThrow(() -> new CommonException("아이디 또는 비밀번호가 일치하지 않습니다.", HttpStatus.BAD_REQUEST));
 
         HttpSession session = request.getSession();
         session.setAttribute(SessionConst.LOGIN_SESSION, member);
