@@ -1,4 +1,4 @@
-package com.aengpyo.orderservice.domain;
+package com.aengpyo.orderservice.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

@@ -10,26 +10,26 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 @Configuration
 public class WebConfig implements WebMvcConfigurer {
 
-    //    @Override
-//    public void addInterceptors(InterceptorRegistry registry) {
-//        registry.addInterceptor(new LoginInterceptor())
-//                .order(1)
-//                .addPathPatterns("/**")
-//                .excludePathPatterns(
-//                        "/api/members/register",
-//                        "/api/login"
-//                );
-//    }
-    @Bean
-    public WebMvcConfigurer corsConfigurer() {
-        return new WebMvcConfigurer() {
-            @Override
-            public void addCorsMappings(CorsRegistry registry) {
-                registry.addMapping("/api/**")
-                        .allowedOrigins("http://localhost:3000") // React 주소 허용
-                        .allowedMethods("GET", "POST", "PUT", "DELETE") // 허용할 HTTP 메서드
-                        .allowCredentials(true); // 세션 유지 가능
-            }
-        };
+    @Override
+    public void addInterceptors(InterceptorRegistry registry) {
+        registry.addInterceptor(new LoginInterceptor())
+                .order(1)
+                .addPathPatterns("/api/**")
+                .excludePathPatterns(
+                        "/api/members/register",
+                        "/api/login",
+                        "/api/logout"
+                );
     }
+
+    @Override
+    public void addCorsMappings(CorsRegistry registry) {
+        registry.addMapping("/api/**")  // API 경로에 대해 CORS 허용
+                .allowedOrigins("http://localhost:3000")  // React 앱의 주소
+                .allowedMethods("GET", "POST", "PUT", "DELETE")  // 허용할 HTTP 메서드
+                .allowedHeaders("*")  // 모든 헤더 허용
+                .allowCredentials(true);  // 인증 정보 전송 허용
+    }
+
 }
+
